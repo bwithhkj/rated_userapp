@@ -1,5 +1,4 @@
-# efood_multivendor
-
+# Rated efood_multivendor
 A new Flutter application.
 
 ## Getting Started
