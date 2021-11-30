@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:efood_multivendor/data/model/response/address_model.dart';
 import 'package:efood_multivendor/data/model/response/error_response.dart';
 import 'package:efood_multivendor/util/app_constants.dart';

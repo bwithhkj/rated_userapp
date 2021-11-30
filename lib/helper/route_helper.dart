@@ -140,6 +140,7 @@ class RouteHelper {
   static String getCartRoute() => '$cart';
   static String getAddAddressRoute() => '$addAddress';
   static String getRestaurantReviewRoute(int restaurantID) => '$restaurantReview?id=$restaurantID';
+  static String getGoogleFormUrl(String googleFormUrl) => '$googleFormUrl';
   static String getAllRestaurantRoute(String page) => '$allRestaurants?page=$page';
 
   static List<GetPage> routes = [

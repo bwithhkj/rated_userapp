@@ -7,16 +7,19 @@ import 'package:efood_multivendor/helper/date_converter.dart';
 import 'package:efood_multivendor/helper/responsive_helper.dart';
 import 'package:efood_multivendor/helper/route_helper.dart';
 import 'package:efood_multivendor/util/dimensions.dart';
+import 'package:efood_multivendor/util/html_type.dart';
 import 'package:efood_multivendor/util/styles.dart';
 import 'package:efood_multivendor/view/base/custom_image.dart';
 import 'package:efood_multivendor/view/base/custom_snackbar.dart';
+import 'package:efood_multivendor/view/screens/html/html_viewer_screen.dart';
+import 'package:efood_multivendor/view/screens/webview/google_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RestaurantDescriptionView extends StatelessWidget {
   final Restaurant restaurant;
   RestaurantDescriptionView({@required this.restaurant});
-
+//9801255557
   @override
   Widget build(BuildContext context) {
     Color _textColor = ResponsiveHelper.isDesktop(context) ? Colors.white : null;
@@ -97,6 +100,23 @@ class RestaurantDescriptionView extends StatelessWidget {
           ]),
         ),
         Expanded(child: SizedBox()),
+        restaurant.googleFormUrl != null? InkWell(
+          onTap: () => Get.to(GoogleForm(googleFormUrl: restaurant.googleFormUrl)),
+          child: Column(children: [
+            Icon(Icons.money, color: Theme.of(context).primaryColor, size: 20),
+            SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+            Text('Survey'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: _textColor)),
+          ]),
+        ): Text(''),
+        restaurant.googleFormUrl != null?Expanded(child: SizedBox()): Text(''),
+        InkWell(
+          child: Column(children: [
+            Icon(Icons.qr_code_scanner, color: Theme.of(context).primaryColor, size: 20),
+            SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+            Text('Scan Code', style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: _textColor)),
+          ]),
+        ),
+        Expanded(child: SizedBox()),
         InkWell(
           onTap: () => Get.toNamed(RouteHelper.getMapRoute(
             AddressModel(
@@ -110,6 +130,7 @@ class RestaurantDescriptionView extends StatelessWidget {
             Text('location'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: _textColor)),
           ]),
         ),
+
         (restaurant.delivery && restaurant.freeDelivery) ? Expanded(child: SizedBox()) : SizedBox(),
         (restaurant.delivery && restaurant.freeDelivery) ? Column(children: [
           Icon(Icons.money_off, color: Theme.of(context).primaryColor, size: 20),

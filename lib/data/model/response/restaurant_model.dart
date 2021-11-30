@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class RestaurantModel {
   int totalSize;
   String limit;
@@ -19,7 +17,6 @@ class RestaurantModel {
         restaurants.add(new Restaurant.fromJson(v));
       });
     }
-
   }
 
   Map<String, dynamic> toJson() {
@@ -47,6 +44,7 @@ class Restaurant {
   String currency;
   String openingTime;
   String closeingTime;
+  String googleFormUrl;
   bool freeDelivery;
   String coverPhoto;
   bool delivery;
@@ -65,32 +63,33 @@ class Restaurant {
 
   Restaurant(
       {this.id,
-        this.name,
-        this.phone,
-        this.email,
-        this.logo,
-        this.latitude,
-        this.longitude,
-        this.address,
-        this.minimumOrder,
-        this.currency,
-        this.openingTime,
-        this.closeingTime,
-        this.freeDelivery,
-        this.coverPhoto,
-        this.delivery,
-        this.takeAway,
-        this.scheduleOrder,
-        this.avgRating,
-        this.tax,
-        this.ratingCount,
-        this.offDay,
-        this.selfDeliverySystem,
-        this.posSystem,
-        this.deliveryCharge,
-        this.open,
-        this.active,
-        this.discount});
+      this.name,
+      this.phone,
+      this.email,
+      this.logo,
+      this.latitude,
+      this.longitude,
+      this.address,
+      this.minimumOrder,
+      this.currency,
+      this.openingTime,
+      this.closeingTime,
+      this.googleFormUrl,
+      this.freeDelivery,
+      this.coverPhoto,
+      this.delivery,
+      this.takeAway,
+      this.scheduleOrder,
+      this.avgRating,
+      this.tax,
+      this.ratingCount,
+      this.offDay,
+      this.selfDeliverySystem,
+      this.posSystem,
+      this.deliveryCharge,
+      this.open,
+      this.active,
+      this.discount});
 
   Restaurant.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -105,6 +104,7 @@ class Restaurant {
     currency = json['currency'];
     openingTime = json['available_time_starts'];
     closeingTime = json['available_time_ends'];
+    googleFormUrl = json['google_form_url'];
     freeDelivery = json['free_delivery'];
     coverPhoto = json['cover_photo'] != null ? json['cover_photo'] : '';
     delivery = json['delivery'];
@@ -119,7 +119,9 @@ class Restaurant {
     deliveryCharge = json['delivery_charge'].toDouble();
     open = json['open'];
     active = json['active'];
-    discount = json['discount'] != null ? new Discount.fromJson(json['discount']) : null;
+    discount = json['discount'] != null
+        ? new Discount.fromJson(json['discount'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -133,6 +135,7 @@ class Restaurant {
     data['longitude'] = this.longitude;
     data['address'] = this.address;
     data['minimum_order'] = this.minimumOrder;
+    data['google_form_url']= this.googleFormUrl;
     data['currency'] = this.currency;
     data['available_time_starts'] = this.openingTime;
     data['available_time_ends'] = this.closeingTime;
@@ -173,17 +176,17 @@ class Discount {
 
   Discount(
       {this.id,
-        this.startDate,
-        this.endDate,
-        this.startTime,
-        this.endTime,
-        this.minPurchase,
-        this.maxDiscount,
-        this.discount,
-        this.discountType,
-        this.restaurantId,
-        this.createdAt,
-        this.updatedAt});
+      this.startDate,
+      this.endDate,
+      this.startTime,
+      this.endTime,
+      this.minPurchase,
+      this.maxDiscount,
+      this.discount,
+      this.discountType,
+      this.restaurantId,
+      this.createdAt,
+      this.updatedAt});
 
   Discount.fromJson(Map<String, dynamic> json) {
     id = json['id'];
