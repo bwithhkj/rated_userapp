@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void showCustomSnackBar(String message, {bool isError = true}) {
-  Get.showSnackbar(GetBar(
+  Get.showSnackbar(GetSnackBar(
     backgroundColor: isError ? Colors.red : Colors.green,
     message: message,
     maxWidth: Dimensions.WEB_MAX_WIDTH,
@@ -12,6 +12,6 @@ void showCustomSnackBar(String message, {bool isError = true}) {
     margin: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
     borderRadius: Dimensions.RADIUS_SMALL,
     isDismissible: true,
-    dismissDirection: SnackDismissDirection.HORIZONTAL,
+    dismissDirection: DismissDirection.horizontal,
   ));
 }
